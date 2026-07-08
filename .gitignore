@@ -1,0 +1,13 @@
+# Python
+server/__pycache__/
+server/**/__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# VOSK STT model (large binary, download separately)
+server/model/
+
+# Misc
+*.lnk

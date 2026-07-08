@@ -1,0 +1,9 @@
+Flask==2.3.3
+flask-cors==3.0.10
+python-dotenv==1.0.0
+requests==2.31.0
+vosk==0.3.52
+soundfile==0.12.1
+numpy==1.25.2
+pydub==0.25.1
+gTTS==2.3.0
