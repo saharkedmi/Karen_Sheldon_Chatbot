@@ -14,6 +14,7 @@ Contents
 - `server/app.py` - Python Flask proxy that does STT, calls Gemini, and provides TTS
 - `server/requirements.txt` - Python dependencies
 - `server/README.md` - setup and usage instructions
+- `server/ARCHITECTURE.md` - production server data flow, code walkthrough, and Docker/CasaOS operations cheat sheet
 
 Hardware wiring notes
 - I2S microphone (e.g. INMP441): connect to ESP32-S3 I2S pins (WS, SD, SCK)
