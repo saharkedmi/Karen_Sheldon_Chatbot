@@ -4,6 +4,51 @@ This document describes the production proxy server that bridges the ESP32 firmw
 
 ---
 
+## 0. Initial Setup on CasaOS
+
+The server can be set up in two ways: through the CasaOS graphical UI, or directly from the terminal using the Docker CLI. Both methods run on a lightweight official Python image and mount the code directory from the host.
+
+### Option A: Quick install via terminal (SSH)
+
+Run the following command once to create the container, set the port mapping, mount the code directory, and enable auto-restart:
+
+```bash
+docker run -d \
+  --name TARS-Server \
+  -p 5000:5000 \
+  -v /data/AppData/tars-server:/app \
+  -w /app \
+  --restart always \
+  python:3.10-slim \
+  python app_new.py
+```
+
+### Option B: Manual install via the CasaOS UI
+
+If you'd rather set up the app through the CasaOS App Store:
+
+1. Open the CasaOS web UI.
+2. Click **App Store**, then **Custom Install** in the top-right corner.
+3. Fill in the fields exactly as follows:
+
+| UI Field | Value | Notes |
+| --- | --- | --- |
+| **Docker Image** | `python:3.10-slim` | official, minimal Python image |
+| **App Name** | `TARS-Server` | the container's name in the system |
+| **Network (Ports)** | `Host: 5000` → `Container: 5000` | exposes the server port on the home network |
+| **Volumes (Paths)** | `/data/AppData/tars-server` → `/app` | maps the host code directory into the container |
+| **Working Directory** | `/app` | default working path |
+| **Command** | `python app_new.py` | the server's entrypoint command on container start |
+| **Restart Policy** | `Always` | ensures the server comes back up on its own after a crash or a power loss on the Raspberry Pi / mini PC |
+
+4. Click **Save**. The system will pull the image and start the container in the background.
+
+### What happens right after install?
+
+On first boot, the container finds `app_new.py` at the mounted path, triggers the built-in `try/except` self-healing mechanism, and automatically installs the missing Linux and Python packages (`ffmpeg`, `pydub`, `edge-tts`, `flask`). This takes about a minute; once it's done, port 5000 opens for the ESP32 to connect to.
+
+---
+
 ## 1. System Architecture & Data Flow
 
 The server acts as a smart proxy and media processor between the ESP32 hardware, the cloud LLM, and the neural speech engine.
