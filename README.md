@@ -1,3 +1,4 @@
+<img width="800" height="1422" alt="ezgif-59bdb226a3a67956" src="https://github.com/user-attachments/assets/4f7edca9-af5f-4158-a4cb-a1f1585a003e" />
 QBOT - ESP32-S3 Gemini Client
 
 Overview
