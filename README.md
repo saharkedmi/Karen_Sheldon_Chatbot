@@ -16,6 +16,7 @@ Contents
 - `server/requirements.txt` - Python dependencies
 - `server/README.md` - setup and usage instructions
 - `server/ARCHITECTURE.md` - production server data flow, code walkthrough, and Docker/CasaOS operations cheat sheet
+- `hardware/enclosure/` - 3D-printable robot body (OpenSCAD source + STL files)
 
 Hardware wiring notes
 - I2S microphone (e.g. INMP441): connect to ESP32-S3 I2S pins (WS, SD, SCK)
